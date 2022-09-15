@@ -69,3 +69,27 @@ auth_blueprint.add_url_rule(
     view_func=registration_view,
     methods=['POST', 'GET']
 )
+
+class UserIndexAPI(MethodView):
+    def get(self):
+        users = User.query.all()
+        res = []
+
+        for user in users:
+            current_user = {
+                'id': user.id,
+                'email': user.email,
+                'admin': user.admin,
+                'registered_on': user.registered_on
+            }
+
+            res.append(current_user)
+        return make_response(jsonify(res)), 201
+
+
+auth_blueprint.add_url_rule(
+    '/users/index',
+    
+    view_func=UserIndexAPI.as_view('view_api'),
+    methods=['GET']
+)
