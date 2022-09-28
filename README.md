@@ -1,5 +1,8 @@
-# Flask JWT Auth
+# Overview:
+Created API endpoints to authenticate users and maintain a database of users in Flask
 
+
+# Prompt
 ## Quick Start
 
 ### Basics
